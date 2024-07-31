@@ -21,11 +21,11 @@ export function Header() {
       </Link>
       {!isAuthenticated ? (
         <AnchorButton variant="dark" href="/login">
-          <span className="hidden sm:inline">Login</span>
+          Login
         </AnchorButton>
       ) : (
         <Button onClick={mutation.mutate} variant="dark">
-          <span className="hidden sm:inline">Logout</span>
+          Logout
         </Button>
       )}
     </div>

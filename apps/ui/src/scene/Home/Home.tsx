@@ -28,7 +28,7 @@ const ProductList = () => {
       <h1>Product List</h1>
       <div className="filter-container">
         <input
-          className="search-field"
+          className="search-field w-full md:w-fit"
           type="text"
           name="dataCategory"
           value={filters.dataCategory}
@@ -36,7 +36,7 @@ const ProductList = () => {
           placeholder="Filter by Category"
         />
         <input
-          className="search-field"
+          className="search-field w-full md:w-fit"
           type="text"
           name="name"
           value={filters.name}
