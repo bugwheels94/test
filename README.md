@@ -22,3 +22,9 @@ Copy .env to .env.local or .env.production to have appropirate configuration for
 
 Run `npx nx graph` to show the graph of the workspace.
 It will show tasks that you can run with Nx.
+
+## Demo at
+
+(http://103.164.188.19:9107)[http://103.164.188.19:9107]
+username ankit
+password ankit
