@@ -16,7 +16,7 @@ export function Header() {
   return (
     <div className={`sm:container mx-auto container`}>
       <Link to="/">
-        <h1 className={`h1 mr-3`}>CodeBench</h1>
+        <h1 className={`h1 mr-3`}>icustomer test</h1>
         <i>Benchmark, Learn, Enhance</i>
       </Link>
       {!isAuthenticated ? (
