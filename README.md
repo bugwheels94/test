@@ -25,6 +25,6 @@ It will show tasks that you can run with Nx.
 
 ## Demo at
 
-(http://103.164.188.19:9107)[http://103.164.188.19:9107]
+http://103.164.188.19:9107
 username ankit
 password ankit
