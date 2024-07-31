@@ -1,11 +1,11 @@
-// src/components/ProductList.js
+// src/components/Home.js
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../services/products';
 import './Home.scss';
 import { Loader } from '../components/Loader/Loader';
 import { Link } from 'react-router-dom';
-const ProductList = () => {
+const Home = () => {
   const [filters, setFilters] = useState({ dataCategory: '', name: '' });
 
   const { data, error, isLoading, refetch } = useQuery({
@@ -25,7 +25,6 @@ const ProductList = () => {
 
   return (
     <div className="product-list-container">
-      <h1>Product List</h1>
       <div className="filter-container">
         <input
           className="search-field w-full md:w-fit"
@@ -50,21 +49,24 @@ const ProductList = () => {
       ) : data?.length === 0 ? (
         <span>No Products Found!</span>
       ) : (
-        <ul>
-          {data?.map((product) => (
-            <li key={product.id} className="product-item">
-              <h2>
-                <Link to={`/products/${product.id}`}>{product.name}</Link>
-              </h2>
-              <p>Category: {product.dataCategory}</p>
-              <p>Record Count: {product.recordCount}</p>
-              <p>Fields: {product.fields}</p>
-            </li>
-          ))}
-        </ul>
+        <>
+          <h1>Product List</h1>
+          <ul>
+            {data?.map((product) => (
+              <li key={product.id} className="product-item">
+                <h2>
+                  <Link to={`/products/${product.id}`}>{product.name}</Link>
+                </h2>
+                <p>Category: {product.dataCategory}</p>
+                <p>Record Count: {product.recordCount}</p>
+                <p>Fields: {product.fields}</p>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );
 };
 
-export default ProductList;
+export default Home;
