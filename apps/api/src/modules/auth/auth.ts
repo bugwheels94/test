@@ -29,7 +29,7 @@ function comparePassword(inputPassword, storedHash, storedSalt) {
 router.use(cookieParser());
 router.use(
   session({
-    secret: process.env.NX_PUBLIC_SESSION_SECRET || 'secret',
+    secret: process.env.NX_PUBLIC_SESSION_SECRET || 'app-secret',
     resave: false,
     saveUninitialized: false,
     cookie: {

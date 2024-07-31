@@ -12,28 +12,31 @@ import productRouter from './modules/products/controller';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 const app = express();
-app.use(cors());
+const apiRouter = express.Router();
+app.use('/api', apiRouter);
+apiRouter.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+apiRouter.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json());
-app.use(passport);
+apiRouter.use(bodyParser.json());
+apiRouter.use(passport);
 
-app.use(router);
-app.use(productRouter);
+apiRouter.use(router);
+apiRouter.use(productRouter);
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+apiRouter.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.get('/api', (req, res) => {
+apiRouter.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
+app.use(express.static(path.join(__dirname, '..', 'ui')));
 
-const port = Number(process.env.NX_PUBLIC_PORT) || 3333;
+const port = Number(process.env.NX_PUBLIC_PORT) || 3000;
 const host = process.env.NX_PUBLIC_HOST || 'localhost';
 AppDataSource.initialize().then(async () => {
   const server = app.listen(port, host, () => {
-    console.log(`Listening at http://${host}:${port}/api`);
+    console.log(`Listening at http://${host}:${port}`);
   });
   server.on('error', console.error);
 });
