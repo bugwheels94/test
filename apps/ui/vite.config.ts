@@ -8,8 +8,18 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/ui',
 
   server: {
-    port: 4200,
-    host: 'localhost',
+    port: 9112,
+    host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        changeOrigin: true,
+        rewrite: (path: string) => {
+          return path.replace(/^\/api/, '');
+        },
+
+        target: 'http://0.0.0.0:9111',
+      },
+    },
   },
 
   preview: {
